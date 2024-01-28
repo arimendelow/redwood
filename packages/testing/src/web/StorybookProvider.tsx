@@ -5,12 +5,11 @@ import { MockProviders } from './MockProviders'
 import { setupRequestHandlers, startMSW, mockCurrentUser } from './mockRequests'
 
 export const MockingLoader = async () => {
-  const reqs = require.context(
-    '~__REDWOOD__USER_WEB_SRC',
-    true,
-    /.+(mock).(js|ts)$/
+  const mockImports = import.meta.glob(
+    '/Users/arimendelow/code/rw-test-proj/web/src/**/*.mock.@(js|ts)',
+    { eager: true }
   )
-  reqs.keys().forEach(reqs)
+  console.log('mockImports', mockImports)
 
   await startMSW('browsers')
   setupRequestHandlers()

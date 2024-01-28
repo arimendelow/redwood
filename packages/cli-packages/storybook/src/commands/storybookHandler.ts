@@ -56,14 +56,13 @@ export async function handler({
     execaOptions
   )
 
-  const storybookConfigPath = path.dirname(
-    require.resolve('@redwoodjs/testing/config/storybook/main.js')
-  )
+  // const storybookConfigPath = path.dirname(
+  //   require.resolve('@redwoodjs/testing/config/storybook/main.js')
+  // )
 
   let command = ''
-  const flags = [
-    `--config-dir "${storybookConfigPath}"`,
-    '--webpack-stats-json',
+  const flags: string[] = [
+    // `--config-dir "${storybookConfigPath}"`,
   ]
 
   if (build) {

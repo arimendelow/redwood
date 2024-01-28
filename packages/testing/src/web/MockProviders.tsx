@@ -17,7 +17,7 @@ import { MockParamsProvider } from './MockParamsProvider'
 // so that we can populate the `routes object` in Storybook and tests.
 const {
   default: UserRouterWithRoutes,
-} = require('~__REDWOOD__USER_ROUTES_FOR_MOCK')
+} = require('/Users/arimendelow/code/rw-test-proj/web/src/Routes.tsx')
 
 // TODO(pc): see if there are props we want to allow to be passed into our mock provider (e.g. AuthProviderProps)
 export const MockProviders: React.FunctionComponent<{

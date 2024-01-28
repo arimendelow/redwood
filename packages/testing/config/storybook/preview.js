@@ -1,7 +1,5 @@
 const React = require('react')
 
-const { merge } = require('webpack-merge')
-
 // The StorybookProvider is responsible for importing all the mock files,
 // booting up the mock server workers, and mocking the router.
 const {
@@ -10,7 +8,7 @@ const {
 } = require('@redwoodjs/testing/dist/web/StorybookProvider')
 
 // Import the user's default CSS file
-require('~__REDWOOD__USER_WEB_DEFAULT_CSS')
+// require('~__REDWOOD__USER_WEB_DEFAULT_CSS')
 
 // The base config provides Redwood-specific integrations. User config values
 // will be merged into this.
@@ -22,7 +20,4 @@ const baseConfig = {
   loaders: [MockingLoader],
 }
 
-const userConfig = require('~__REDWOOD__USER_STORYBOOK_PREVIEW_CONFIG')
-
-/** @returns {import('webpack').Configuration} Webpack Configuration with storybook provider */
-module.exports = merge(baseConfig, userConfig)
+module.exports = baseConfig

@@ -11,4 +11,6 @@ export { MockProviders } from './MockProviders'
 
 export * from './mockRequests'
 
+export * from './StorybookProvider'
+
 // @NOTE Intentionally not exporting findCellMocks here
