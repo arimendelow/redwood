@@ -10,6 +10,7 @@ export const MockingLoader = async () => {
     true,
     /.+(mock).(js|ts)$/
   )
+  console.log('reqs', reqs)
   reqs.keys().forEach(reqs)
 
   await startMSW('browsers')
