@@ -65,16 +65,32 @@ const baseConfig = {
     // sbConfig.resolve.alias['~__REDWOOD__USER_STORYBOOK_PREVIEW_CONFIG'] =
     //   userPreviewPath
 
-    return mergeConfig(sbConfig, {
+    const resolveConfig = {
       resolve: {
-        alias: {
-          '@redwoodjs/router': '@redwoodjs/testing/dist/web/MockRouter.js',
-          '@redwoodjs/auth': '@redwoodjs/testing/dist/web/mockAuth.js',
-          '~__REDWOOD__USER_ROUTES_FOR_MOCK': redwoodProjectPaths.web.routes,
-          '~__REDWOOD__USER_WEB_SRC': redwoodProjectPaths.web.src,
-        },
+        alias: [
+          {
+            find: '@redwoodjs/router',
+            replacement: '@redwoodjs/testing/dist/web/MockRouter.js',
+          },
+          {
+            find: '@redwoodjs/auth',
+            replacement: '@redwoodjs/testing/dist/web/mockAuth.js',
+          },
+          {
+            find: '~__REDWOOD__USER_ROUTES_FOR_MOCK',
+            replacement: redwoodProjectPaths.web.routes,
+          },
+          {
+            find: '~__REDWOOD__USER_WEB_SRC',
+            replacement: redwoodProjectPaths.web.src,
+          },
+        ],
       },
-    })
+    }
+
+    console.log('resolveConfig', resolveConfig)
+
+    return mergeConfig(sbConfig, resolveConfig)
   },
 }
 

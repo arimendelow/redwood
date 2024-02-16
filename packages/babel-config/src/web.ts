@@ -67,6 +67,14 @@ export const getWebSideBabelPlugins = (
             default: 'React',
             path: 'react',
           },
+          {
+            members: [
+              'mockGraphQLQuery',
+              'mockGraphQLMutation',
+              'mockCurrentUser',
+            ],
+            path: '@redwoodjs/testing/web',
+          },
           // A project can turn on trusted graphql documents
           // If projects do not use trusted documents (default)
           // it auto-imports the gql tag from graphql-tag
@@ -133,6 +141,12 @@ export const getWebSideOverrides = (
       ],
     },
   ].filter(Boolean)
+
+  console.log('##########')
+  console.log('in getWebSideOverrides')
+  console.log('node_env', process.env.NODE_ENV)
+  console.log('overrides', overrides)
+  console.log('##########')
 
   return overrides as TransformOptions[]
 }

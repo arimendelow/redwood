@@ -36,8 +36,19 @@ export default function ({ types: t }: { types: typeof types }): PluginObj {
           for (const n of nodesToRemove) {
             n.remove()
           }
-          // Insert at the top of the file
-          p.node.body.unshift(...nodesToInsert)
+          // Insert at the bottom of the file
+          p.node.body.push(...nodesToInsert)
+
+          const importMockGraphqlQuery = t.importDeclaration(
+            [
+              t.importSpecifier(
+                t.identifier('mockGraphqlQuery'),
+                t.identifier('mockGraphqlQuery')
+              ),
+            ],
+            t.stringLiteral(`@redwoodjs/testing/web`)
+          )
+          p.node.body.unshift(importMockGraphqlQuery)
         },
       },
       ExportNamedDeclaration(p, state: { file?: any }) {

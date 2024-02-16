@@ -7,8 +7,6 @@ export {
   customRenderHook as renderHook,
 } from './customRender'
 
-export { MockProviders } from './MockProviders'
-
 export * from './mockRequests'
 
 // @NOTE Intentionally not exporting findCellMocks here
