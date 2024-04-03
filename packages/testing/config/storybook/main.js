@@ -15,21 +15,18 @@ const redwoodProjectPaths = getPaths()
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const baseConfig = {
-  framework: {
-    name: '@storybook/react-webpack5',
-    // This empty object is actually necessary.
-    options: {},
-  },
+  framework: '@storybook/react-webpack5',
 
   stories: [
     `${importStatementPath(
       redwoodProjectPaths.web.src,
-    )}/**/*.stories.@(js|jsx|ts|tsx|mdx)`,
+    )}/**/*.stories.@(js|jsx|ts|tsx)`,
   ],
 
   // See https://storybook.js.org/docs/react/configure/storybook-addons.
   addons: [
     '@storybook/addon-essentials',
+    '@storybook/addon-webpack5-compiler-babel',
     redwoodProjectConfig.web.a11y && '@storybook/addon-a11y',
   ].filter(Boolean),
 
@@ -106,13 +103,13 @@ const baseConfig = {
     ]
 
     // ** LOADERS **
-    const sbMdxRule = sbConfig.module.rules.find(
-      (rule) => rule.test.toString() === /(stories|story)\.mdx$/.toString(),
-    )
-    console.assert(sbMdxRule, 'Storybook MDX rule not found')
-    sbConfig.module.rules = [...rwConfig.module.rules, sbMdxRule].filter(
-      Boolean,
-    )
+    // const sbMdxRule = sbConfig.module.rules.find(
+    //   (rule) => rule.test.toString() === /(stories|story)\.mdx$/.toString(),
+    // )
+    // console.assert(sbMdxRule, 'Storybook MDX rule not found')
+    // sbConfig.module.rules = [...rwConfig.module.rules, sbMdxRule].filter(
+    //   Boolean,
+    // )
 
     // See https://community.redwoodjs.com/t/mocking-node-modules-on-the-web-side-with-webpack-config-in-storybook/1392.
     sbConfig.node = rwConfig.node
